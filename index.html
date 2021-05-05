@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>API Setu + QF</title>
+</head>
+<body>
+    <h1>MetaData API</h1>
+    <h3>All States</h3>
+    <p id = 'response'><p>
+</body>
+<script>
+
+$.ajax({
+    url: "https://cdn-api.co-vin.in/api/v2/admin/location/states",
+    method: "GET",
+    header:{contentType: 'application/json'},
+    //data: data,
+    dataType : "json",
+    success: function(resultResponse){
+        console.log("MetaData API - AllStates");
+        console.log(resultResponse);
+        $('#response').text(JSON.stringify(resultResponse));},
+    error: function(textStatus, errorThrown){
+        let error = textStatus + " " + errorThrown;
+        $('#response').text(error);
+    },
+    });
+
+/*
+$.ajax({
+    url: "https://cdn-api.co-vin.in/api/v2/admin/location/districts/" + "16",
+    method: "GET",
+    header:{contentType: 'application/json'},
+    //data: data,
+    dataType : "json",
+    success: function(resultResponse){
+        console.log("MetaData API - District");
+        console.log(resultResponse);
+    },
+});
+*/
+
+//MetaData API
+//https://cdn-api.co-vin.in/api/v2/admin/location/states
+//https://cdn-api.co-vin.in/api/v2/admin/location/districts/{}
+
+//Appointment Availability API
+// /v2/appointment/sessions/public/findByPin
+// /v2/appointment/sessions/public/findByDistrict
+// /v2/appointment/sessions/public/calendarByPin
+// /v2/appointment/sessions/public/calendarByDistrict
+
+//Certificate API
+// /v2/registration/certificate/public/download --Auth req
+</script>
+</html>
